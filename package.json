@@ -1,0 +1,36 @@
+{
+  "name": "print-area",
+  "version": "0.1.0",
+  "description": "web printArea no jquery",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Martin-Bai/printArea.git"
+  },
+  "keywords": [
+    "print",
+    "web-print",
+    "print-area",
+    "no-jquery"
+  ],
+  "author": "martin.bai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Martin-Bai/printArea/issues"
+  },
+  "homepage": "https://github.com/Martin-Bai/printArea#readme",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "7",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "clean-webpack-plugin": "^2.0.2",
+    "webpack": "^4.32.1",
+    "webpack-cli": "^3.3.2"
+  }
+}

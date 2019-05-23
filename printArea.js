@@ -1,4 +1,4 @@
-class PrintArea {
+export  default class PrintArea {
   constructor(ele, options) {
     this.counter = 0;
     this.modes = {iframe: "iframe", popup: "popup"};
@@ -111,7 +111,7 @@ class PrintArea {
     let attributes = "";
 
     attrs.forEach(attr => {
-      var eleAttr = ele.getAttribute( attr );
+      const eleAttr = ele.getAttribute( attr );
       if ( eleAttr ) {
         attributes += (attributes.length > 0 ? " ":"") + attr + "='" + eleAttr + "'";
       }
