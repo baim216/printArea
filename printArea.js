@@ -21,7 +21,7 @@ export default class PrintArea {
 
     this.idPrefix = "printArea_";
 
-    this.ele = this.isElement(ele) ? ele : document.querySelector(ele);
+    this.ele = ele.nodeType === 1 ? ele : document.querySelector(ele);
   }
 
   print() {
@@ -123,7 +123,7 @@ export default class PrintArea {
     const copy = ele.cloneNode(true);
     const copiedInputs = copy.querySelectorAll("input,select,textarea");
 
-    Array.from(copy.querySelectorAll("input,select,textarea")).forEach((item, index) => {
+    Array.from(ele.querySelectorAll("input,select,textarea")).forEach((item, index) => {
       let typeInput = item.getAttribute("type");
       if (!typeInput) {
         const targetName = item.nodeName;
@@ -132,14 +132,19 @@ export default class PrintArea {
       let copiedInput = copiedInputs[index];
 
       if ( typeInput === "radio" || typeInput === "checkbox" ) {
-        copiedInput.checked = item.checked;
+        copiedInput.removeAttribute('checked');
+        if(item.checked){
+          copiedInput.setAttribute('checked', true);
+        }
       } else if ( typeInput === "text" || typeInput === "" ) {
         copiedInput.setAttribute( "value", item.textContent );
       } else if ( typeInput === "select" ){
         const options = item.querySelectorAll('option');
-        Array.from(options).forEach(option => {
+        const copiedOptions = copiedInput.querySelectorAll('option');
+        Array.from(options).forEach((option, optionIndex) => {
+          copiedOptions[optionIndex].removeAttribute('selected');
           if ( option.selected ) {
-            option.setAttribute('selected', true);
+            copiedOptions[optionIndex].setAttribute('selected', true);
           }
         });
       } else if ( typeInput === "textarea" ) {
@@ -192,10 +197,6 @@ export default class PrintArea {
     newWin.doc = newWin.document;
 
     return newWin;
-  }
-
-  static isElement(el) {
-    return el.nodeType === 1;
   }
 
 }

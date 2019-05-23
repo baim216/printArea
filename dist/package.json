@@ -1,6 +1,6 @@
 {
   "name": "print-area",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "web printArea no jquery",
   "main": "index.js",
   "scripts": {

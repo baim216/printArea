@@ -44,7 +44,7 @@ var PrintArea =
       };
       this.settings = Object.assign({}, defaults, options);
       this.idPrefix = "printArea_";
-      this.ele = this.isElement(ele) ? ele : document.querySelector(ele);
+      this.ele = ele.nodeType === 1 ? ele : document.querySelector(ele);
     }
 
     _createClass(PrintArea, [{
@@ -155,7 +155,7 @@ var PrintArea =
       value: function getFormData(ele) {
         var copy = ele.cloneNode(true);
         var copiedInputs = copy.querySelectorAll("input,select,textarea");
-        Array.from(copy.querySelectorAll("input,select,textarea")).forEach(function (item, index) {
+        Array.from(ele.querySelectorAll("input,select,textarea")).forEach(function (item, index) {
           var typeInput = item.getAttribute("type");
 
           if (!typeInput) {
@@ -166,14 +166,21 @@ var PrintArea =
           var copiedInput = copiedInputs[index];
 
           if (typeInput === "radio" || typeInput === "checkbox") {
-            copiedInput.checked = item.checked;
+            copiedInput.removeAttribute('checked');
+
+            if (item.checked) {
+              copiedInput.setAttribute('checked', true);
+            }
           } else if (typeInput === "text" || typeInput === "") {
             copiedInput.setAttribute("value", item.textContent);
           } else if (typeInput === "select") {
             var options = item.querySelectorAll('option');
-            Array.from(options).forEach(function (option) {
+            var copiedOptions = copiedInput.querySelectorAll('option');
+            Array.from(options).forEach(function (option, optionIndex) {
+              copiedOptions[optionIndex].removeAttribute('selected');
+
               if (option.selected) {
-                option.setAttribute('selected', true);
+                copiedOptions[optionIndex].setAttribute('selected', true);
               }
             });
           } else if (typeInput === "textarea") {
@@ -232,11 +239,6 @@ var PrintArea =
         var newWin = window.open("", "_blank", windowAttr);
         newWin.doc = newWin.document;
         return newWin;
-      }
-    }], [{
-      key: "isElement",
-      value: function isElement(el) {
-        return el.nodeType === 1;
       }
     }]);
 
