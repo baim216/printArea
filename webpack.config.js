@@ -7,16 +7,17 @@ module.exports = {
     path: path.resolve(__dirname, './dist/lib'),
     filename: 'index.js'
   },
-  mode: 'production',
+  mode: 'none',
   module: {
     rules: [
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        use: [
+          {
+            loader: 'babel-loader'
+          }
+        ],
         exclude: /node_modules/,
-        query: {
-          presets: ['stage-0']
-        }
       },
     ]
   },

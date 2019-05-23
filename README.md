@@ -18,13 +18,16 @@ printArea.print();
 ```
 
 ##api
+
 ####params
+  
 | 名称(name) |  类型(type) |是否必填(required) | 默认值(default) | 说明(description) |
 | ----- | ----- | ----- | ----- | ----- |
 |element| Element/String |true|null|需要打印的元素，可以是元素节点，也可以是document.querySelector()选择器|
 |options|Object|false|见下表|传递的参数|
 
 ####options
+  
 | 名称(name) |  类型(type) | 可选范围(required) | 默认值(default) | 说明(description) |
 | ----- | ----- | ----- | ----- | ----- |
 |mode|String|"iframe":将元素插入到iframe中打印  "popup":将元素插入到新的window中打印|"iframe"| 打印呈现的方式 |

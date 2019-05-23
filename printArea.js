@@ -1,4 +1,4 @@
-export  default class PrintArea {
+export default class PrintArea {
   constructor(ele, options) {
     this.counter = 0;
     this.modes = {iframe: "iframe", popup: "popup"};
@@ -17,10 +17,7 @@ export  default class PrintArea {
       retainAttr: ["id", "class", "style"]
     };
 
-    this.settings = {
-      ...defaults,
-      ...options,
-    };
+    this.settings = Object.assign({}, defaults, options);
 
     this.idPrefix = "printArea_";
 
@@ -135,7 +132,7 @@ export  default class PrintArea {
       let copiedInput = copiedInputs[index];
 
       if ( typeInput === "radio" || typeInput === "checkbox" ) {
-        copiedInput.setAttribute( "checked", item.checked );
+        copiedInput.checked = item.checked;
       } else if ( typeInput === "text" || typeInput === "" ) {
         copiedInput.setAttribute( "value", item.textContent );
       } else if ( typeInput === "select" ){
@@ -197,7 +194,7 @@ export  default class PrintArea {
     return newWin;
   }
 
-  isElement(el) {
+  static isElement(el) {
     return el.nodeType === 1;
   }
 
