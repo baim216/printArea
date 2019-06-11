@@ -17,16 +17,16 @@ const printArea = new PrintArea(element, options);
 printArea.print();
 ```
 
-##api
+## api
 
-####params
+#### params
   
 | 名称(name) |  类型(type) |是否必填(required) | 默认值(default) | 说明(description) |
 | ----- | ----- | ----- | ----- | ----- |
 |element| Element/String |true|null|需要打印的元素，可以是元素节点，也可以是document.querySelector()选择器|
 |options|Object|false|见下表|传递的参数|
 
-####options
+#### options
   
 | 名称(name) |  类型(type) | 可选范围(required) | 默认值(default) | 说明(description) |
 | ----- | ----- | ----- | ----- | ----- |
@@ -42,7 +42,7 @@ printArea.print();
 |extraHead|String|无|''| 需要额外额引入的头，如'&lt;meta http-equiv="Content-Type" content="text/html;charset=utf-8"&gt;&lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"&gt;'，当前页面的头会自动引入 |
 |retainAttr|Array|无|["id", "class", "style"]| 打印元素上需要复制的属性 |
 
-##version
+## version
 0.1.0
 
 ## license
