@@ -200,3 +200,4 @@ export default class PrintArea {
   }
 
 }
+window.PrintArea = PrintArea;

@@ -36,14 +36,12 @@
   <textarea></textarea>
 </div>
 <button id="print" onclick="f()">打印</button>
-
-<script src="printArea.js"></script>
+<script src="./dist/index.js"></script>
 <script>
   function f() {
-    const printArea = new PrintArea('#printArea');
-    printArea.print();
+    var pa = new PrintArea('#printArea');
+    pa.print();
   }
-
 </script>
 </body>
 </html>
