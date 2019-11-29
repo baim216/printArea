@@ -144,7 +144,7 @@
           });
         }
 
-        return "<head><title>" + this.settings.popTitle + "</title>" + extraHead + linkList.join() + "</head>";
+        return "<head><title>" + this.settings.popTitle + "</title>" + extraHead + linkList.join("") + "</head>";
       }
     }, {
       key: "getBody",
